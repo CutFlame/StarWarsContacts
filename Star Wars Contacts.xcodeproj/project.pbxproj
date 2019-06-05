@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		27C397F722A7286500590E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C397F622A7286500590E12 /* AppDelegate.swift */; };
 		27C397F922A7286500590E12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C397F822A7286500590E12 /* SceneDelegate.swift */; };
-		27C397FB22A7286500590E12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C397FA22A7286500590E12 /* ContentView.swift */; };
 		27C397FD22A7286700590E12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C397FC22A7286700590E12 /* Assets.xcassets */; };
 		27C3980022A7286700590E12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C397FF22A7286700590E12 /* Preview Assets.xcassets */; };
 		27C3980322A7286700590E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3980122A7286700590E12 /* LaunchScreen.storyboard */; };
+		27C3980D22A72E5200590E12 /* IndividualModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3980C22A72E5200590E12 /* IndividualModel.swift */; };
+		27C3980F22A7400600590E12 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3980E22A7400500590E12 /* Statics.swift */; };
+		27C3981222A820EB00590E12 /* IndividualDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981122A820EB00590E12 /* IndividualDetailView.swift */; };
+		27C3981422A8211500590E12 /* IndividualListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981322A8211500590E12 /* IndividualListView.swift */; };
+		27C3981722A82D7900590E12 /* IndividualDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981622A82D7900590E12 /* IndividualDetailViewModel.swift */; };
+		27C3981922A82D8B00590E12 /* IndividualListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981822A82D8B00590E12 /* IndividualListViewModel.swift */; };
+		27C3981D22A83A5400590E12 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981C22A83A5400590E12 /* AppCoordinator.swift */; };
+		27C3981F22A83B1800590E12 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981E22A83B1800590E12 /* ResponseWrapper.swift */; };
+		27C3982122A83B4B00590E12 /* AffiliationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982022A83B4B00590E12 /* AffiliationEnum.swift */; };
+		27C3982322A83B7800590E12 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982222A83B7800590E12 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		27C397F322A7286500590E12 /* Star Wars Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Star Wars Contacts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C397F622A7286500590E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27C397F822A7286500590E12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		27C397FA22A7286500590E12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		27C397FC22A7286700590E12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27C397FF22A7286700590E12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27C3980222A7286700590E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27C3980422A7286700590E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27C3980C22A72E5200590E12 /* IndividualModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualModel.swift; sourceTree = "<group>"; };
+		27C3980E22A7400500590E12 /* Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
+		27C3981122A820EB00590E12 /* IndividualDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailView.swift; sourceTree = "<group>"; };
+		27C3981322A8211500590E12 /* IndividualListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualListView.swift; sourceTree = "<group>"; };
+		27C3981622A82D7900590E12 /* IndividualDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailViewModel.swift; sourceTree = "<group>"; };
+		27C3981822A82D8B00590E12 /* IndividualListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualListViewModel.swift; sourceTree = "<group>"; };
+		27C3981C22A83A5400590E12 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		27C3981E22A83B1800590E12 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
+		27C3982022A83B4B00590E12 /* AffiliationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliationEnum.swift; sourceTree = "<group>"; };
+		27C3982222A83B7800590E12 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +74,16 @@
 		27C397F522A7286500590E12 /* Star Wars Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				27C3981B22A83A4600590E12 /* Coordinators */,
+				27C3981A22A82DBC00590E12 /* Models */,
+				27C3981522A82D5F00590E12 /* ViewModels */,
+				27C3981022A820C700590E12 /* Views */,
 				27C397F622A7286500590E12 /* AppDelegate.swift */,
 				27C397F822A7286500590E12 /* SceneDelegate.swift */,
-				27C397FA22A7286500590E12 /* ContentView.swift */,
 				27C397FC22A7286700590E12 /* Assets.xcassets */,
 				27C3980122A7286700590E12 /* LaunchScreen.storyboard */,
 				27C3980422A7286700590E12 /* Info.plist */,
+				27C3980E22A7400500590E12 /* Statics.swift */,
 				27C397FE22A7286700590E12 /* Preview Content */,
 			);
 			path = "Star Wars Contacts";
@@ -73,6 +95,43 @@
 				27C397FF22A7286700590E12 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		27C3981022A820C700590E12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27C3981122A820EB00590E12 /* IndividualDetailView.swift */,
+				27C3981322A8211500590E12 /* IndividualListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		27C3981522A82D5F00590E12 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				27C3981622A82D7900590E12 /* IndividualDetailViewModel.swift */,
+				27C3981822A82D8B00590E12 /* IndividualListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		27C3981A22A82DBC00590E12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27C3980C22A72E5200590E12 /* IndividualModel.swift */,
+				27C3981E22A83B1800590E12 /* ResponseWrapper.swift */,
+				27C3982022A83B4B00590E12 /* AffiliationEnum.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		27C3981B22A83A4600590E12 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				27C3981C22A83A5400590E12 /* AppCoordinator.swift */,
+				27C3982222A83B7800590E12 /* Coordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +205,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C3981F22A83B1800590E12 /* ResponseWrapper.swift in Sources */,
 				27C397F722A7286500590E12 /* AppDelegate.swift in Sources */,
+				27C3982122A83B4B00590E12 /* AffiliationEnum.swift in Sources */,
+				27C3981422A8211500590E12 /* IndividualListView.swift in Sources */,
+				27C3981722A82D7900590E12 /* IndividualDetailViewModel.swift in Sources */,
+				27C3980F22A7400600590E12 /* Statics.swift in Sources */,
+				27C3981222A820EB00590E12 /* IndividualDetailView.swift in Sources */,
 				27C397F922A7286500590E12 /* SceneDelegate.swift in Sources */,
-				27C397FB22A7286500590E12 /* ContentView.swift in Sources */,
+				27C3982322A83B7800590E12 /* Coordinator.swift in Sources */,
+				27C3981D22A83A5400590E12 /* AppCoordinator.swift in Sources */,
+				27C3980D22A72E5200590E12 /* IndividualModel.swift in Sources */,
+				27C3981922A82D8B00590E12 /* IndividualListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
