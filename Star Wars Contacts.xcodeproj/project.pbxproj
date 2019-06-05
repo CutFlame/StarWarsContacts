@@ -13,7 +13,7 @@
 		27C3980022A7286700590E12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C397FF22A7286700590E12 /* Preview Assets.xcassets */; };
 		27C3980322A7286700590E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3980122A7286700590E12 /* LaunchScreen.storyboard */; };
 		27C3980D22A72E5200590E12 /* IndividualModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3980C22A72E5200590E12 /* IndividualModel.swift */; };
-		27C3980F22A7400600590E12 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3980E22A7400500590E12 /* Statics.swift */; };
+		27C3980F22A7400600590E12 /* Coders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3980E22A7400500590E12 /* Coders.swift */; };
 		27C3981222A820EB00590E12 /* IndividualDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981122A820EB00590E12 /* IndividualDetailView.swift */; };
 		27C3981422A8211500590E12 /* IndividualListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981322A8211500590E12 /* IndividualListView.swift */; };
 		27C3981722A82D7900590E12 /* IndividualDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981622A82D7900590E12 /* IndividualDetailViewModel.swift */; };
@@ -22,6 +22,10 @@
 		27C3981F22A83B1800590E12 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3981E22A83B1800590E12 /* ResponseWrapper.swift */; };
 		27C3982122A83B4B00590E12 /* AffiliationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982022A83B4B00590E12 /* AffiliationEnum.swift */; };
 		27C3982322A83B7800590E12 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982222A83B7800590E12 /* Coordinator.swift */; };
+		27C3982622A846D300590E12 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982522A846D300590E12 /* DateFormatters.swift */; };
+		27C3982822A846EC00590E12 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982722A846EC00590E12 /* FileManagerExtensions.swift */; };
+		27C3982A22A8476500590E12 /* individuals.json in Resources */ = {isa = PBXBuildFile; fileRef = 27C3982922A8476500590E12 /* individuals.json */; };
+		27C3982C22A8496B00590E12 /* PreviewDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982B22A8496B00590E12 /* PreviewDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +37,7 @@
 		27C3980222A7286700590E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27C3980422A7286700590E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C3980C22A72E5200590E12 /* IndividualModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualModel.swift; sourceTree = "<group>"; };
-		27C3980E22A7400500590E12 /* Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
+		27C3980E22A7400500590E12 /* Coders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coders.swift; sourceTree = "<group>"; };
 		27C3981122A820EB00590E12 /* IndividualDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailView.swift; sourceTree = "<group>"; };
 		27C3981322A8211500590E12 /* IndividualListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualListView.swift; sourceTree = "<group>"; };
 		27C3981622A82D7900590E12 /* IndividualDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailViewModel.swift; sourceTree = "<group>"; };
@@ -42,6 +46,10 @@
 		27C3981E22A83B1800590E12 /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 		27C3982022A83B4B00590E12 /* AffiliationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliationEnum.swift; sourceTree = "<group>"; };
 		27C3982222A83B7800590E12 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		27C3982522A846D300590E12 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		27C3982722A846EC00590E12 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
+		27C3982922A8476500590E12 /* individuals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = individuals.json; sourceTree = "<group>"; };
+		27C3982B22A8496B00590E12 /* PreviewDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,17 +82,17 @@
 		27C397F522A7286500590E12 /* Star Wars Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				27C3981B22A83A4600590E12 /* Coordinators */,
-				27C3981A22A82DBC00590E12 /* Models */,
-				27C3981522A82D5F00590E12 /* ViewModels */,
-				27C3981022A820C700590E12 /* Views */,
+				27C3980422A7286700590E12 /* Info.plist */,
+				27C3980122A7286700590E12 /* LaunchScreen.storyboard */,
 				27C397F622A7286500590E12 /* AppDelegate.swift */,
 				27C397F822A7286500590E12 /* SceneDelegate.swift */,
 				27C397FC22A7286700590E12 /* Assets.xcassets */,
-				27C3980122A7286700590E12 /* LaunchScreen.storyboard */,
-				27C3980422A7286700590E12 /* Info.plist */,
-				27C3980E22A7400500590E12 /* Statics.swift */,
+				27C3981B22A83A4600590E12 /* Coordinators */,
+				27C3981A22A82DBC00590E12 /* Models */,
+				27C3982422A8469F00590E12 /* Statics */,
+				27C3981522A82D5F00590E12 /* ViewModels */,
 				27C397FE22A7286700590E12 /* Preview Content */,
+				27C3981022A820C700590E12 /* Views */,
 			);
 			path = "Star Wars Contacts";
 			sourceTree = "<group>";
@@ -93,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				27C397FF22A7286700590E12 /* Preview Assets.xcassets */,
+				27C3982922A8476500590E12 /* individuals.json */,
+				27C3982B22A8496B00590E12 /* PreviewDatabase.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -132,6 +142,16 @@
 				27C3982222A83B7800590E12 /* Coordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		27C3982422A8469F00590E12 /* Statics */ = {
+			isa = PBXGroup;
+			children = (
+				27C3980E22A7400500590E12 /* Coders.swift */,
+				27C3982522A846D300590E12 /* DateFormatters.swift */,
+				27C3982722A846EC00590E12 /* FileManagerExtensions.swift */,
+			);
+			path = Statics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C3982A22A8476500590E12 /* individuals.json in Resources */,
 				27C3980322A7286700590E12 /* LaunchScreen.storyboard in Resources */,
 				27C3980022A7286700590E12 /* Preview Assets.xcassets in Resources */,
 				27C397FD22A7286700590E12 /* Assets.xcassets in Resources */,
@@ -206,12 +227,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C3981F22A83B1800590E12 /* ResponseWrapper.swift in Sources */,
+				27C3982822A846EC00590E12 /* FileManagerExtensions.swift in Sources */,
 				27C397F722A7286500590E12 /* AppDelegate.swift in Sources */,
 				27C3982122A83B4B00590E12 /* AffiliationEnum.swift in Sources */,
+				27C3982622A846D300590E12 /* DateFormatters.swift in Sources */,
 				27C3981422A8211500590E12 /* IndividualListView.swift in Sources */,
 				27C3981722A82D7900590E12 /* IndividualDetailViewModel.swift in Sources */,
-				27C3980F22A7400600590E12 /* Statics.swift in Sources */,
+				27C3980F22A7400600590E12 /* Coders.swift in Sources */,
 				27C3981222A820EB00590E12 /* IndividualDetailView.swift in Sources */,
+				27C3982C22A8496B00590E12 /* PreviewDatabase.swift in Sources */,
 				27C397F922A7286500590E12 /* SceneDelegate.swift in Sources */,
 				27C3982322A83B7800590E12 /* Coordinator.swift in Sources */,
 				27C3981D22A83A5400590E12 /* AppCoordinator.swift in Sources */,

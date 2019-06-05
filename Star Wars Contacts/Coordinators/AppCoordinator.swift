@@ -27,16 +27,15 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
 
     private func showLaunchScreen() {
         let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
-        guard let viewController: UIViewController = storyboard.instantiateInitialViewController() else {
+        guard let viewController = storyboard.instantiateInitialViewController() else {
             fatalError("Could not instantiate initial view controller from storyboard")
         }
         window.rootViewController = viewController
     }
 
     private func showListScreen() {
-        let luke = IndividualDetailViewModel(id: 1, firstName: "Luke", lastName: "Sky", birthdate: Date.init(timeIntervalSinceReferenceDate: 0), profilePictureURL: URL(string: "https://edge.ldscdn.org/mobile/interview/07.png")!, isForceSensitive: true, affiliation: .jedi)
-        let list = IndividualListViewModel(items: [luke])
+        let viewModel = IndividualListViewModel(items: PreviewDatabase.individuals)
 
-        window.rootViewController = UIHostingController(rootView: IndividualListView(viewModel: list))
+        window.rootViewController = UIHostingController(rootView: IndividualListView(viewModel: viewModel))
     }
 }

@@ -51,22 +51,8 @@ struct IndividualDetailView: View {
 
 #if DEBUG
 struct IndividualDetailView_Previews : PreviewProvider {
-    private static let luke =
-    """
-{
-    "id":1,
-    "firstName":"Luke",
-    "lastName":"Skywalker",
-    "birthdate":"1963-05-05",
-    "profilePicture":"https://edge.ldscdn.org/mobile/interview/07.png",
-    "forceSensitive":true,
-    "affiliation":"JEDI"
-}
-"""
-
     static var previews: some View {
-        let viewModel = try! IndividualModel(luke)
-        return IndividualDetailView(viewModel: viewModel)
+        return IndividualDetailView(viewModel: PreviewDatabase.individuals[0])
     }
 }
 #endif

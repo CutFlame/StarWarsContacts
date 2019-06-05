@@ -33,17 +33,17 @@ struct IndividualListView: View {
                 NavigationButton(destination: IndividualDetailView(viewModel: item), isDetail: true) {
                     IndividualRow(viewModel: item)
                 }
-                }
-                .navigationBarTitle(Text("Individuals"))
+            }
+            .navigationBarTitle(Text("Individuals"))
         }
     }
 
 }
 
-//#if DEBUG
-//struct IndividualListView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        IndividualListView()
-//    }
-//}
-//#endif
+#if DEBUG
+struct IndividualListView_Previews : PreviewProvider {
+    static var previews: some View {
+        IndividualListView(viewModel: IndividualListViewModel(items: PreviewDatabase.individuals))
+    }
+}
+#endif
