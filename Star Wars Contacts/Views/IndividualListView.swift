@@ -8,22 +8,6 @@
 
 import SwiftUI
 
-struct IndividualRow: View {
-    var viewModel: IndividualDetailViewModel
-    var body: some View {
-        HStack {
-            viewModel.image
-                .shadow(radius: 10)
-                .frame(width: 50, height: 50)
-                .scaledToFill()
-                .clipped()
-
-            Text(viewModel.fullName)
-        }
-    }
-}
-
-
 struct IndividualListView: View {
 
     var viewModel: IndividualListViewModel
