@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		273F1EDD22A84F5D00237A82 /* IndividualRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F1EDC22A84F5D00237A82 /* IndividualRow.swift */; };
+		273F1EDF22A862E900237A82 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F1EDE22A862E900237A82 /* ImageStore.swift */; };
 		27C397F722A7286500590E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C397F622A7286500590E12 /* AppDelegate.swift */; };
 		27C397F922A7286500590E12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C397F822A7286500590E12 /* SceneDelegate.swift */; };
 		27C397FD22A7286700590E12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C397FC22A7286700590E12 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		273F1EDC22A84F5D00237A82 /* IndividualRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualRow.swift; sourceTree = "<group>"; };
+		273F1EDE22A862E900237A82 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		27C397F322A7286500590E12 /* Star Wars Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Star Wars Contacts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C397F622A7286500590E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27C397F822A7286500590E12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				27C3980E22A7400500590E12 /* Coders.swift */,
 				27C3982522A846D300590E12 /* DateFormatters.swift */,
 				27C3982722A846EC00590E12 /* FileManagerExtensions.swift */,
+				273F1EDE22A862E900237A82 /* ImageStore.swift */,
 			);
 			path = Statics;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				27C3981F22A83B1800590E12 /* ResponseWrapper.swift in Sources */,
 				27C3982822A846EC00590E12 /* FileManagerExtensions.swift in Sources */,
+				273F1EDF22A862E900237A82 /* ImageStore.swift in Sources */,
 				27C397F722A7286500590E12 /* AppDelegate.swift in Sources */,
 				27C3982122A83B4B00590E12 /* AffiliationEnum.swift in Sources */,
 				27C3982622A846D300590E12 /* DateFormatters.swift in Sources */,

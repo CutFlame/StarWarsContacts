@@ -21,7 +21,32 @@ extension IndividualDetailViewModel: Identifiable {
         }
         return names.joined(separator: " ")
     }
-    var image: Image {
-        Image(uiImage: #imageLiteral(resourceName: "user"))
+    
+    static var defaultImage = UIImage(named: "user")!.cgImage!
+
+    var image: CGImage {
+        guard
+            let url = Bundle.main.url(forResource: profilePictureURL.path, withExtension: nil),
+            let imageSource = CGImageSourceCreateWithURL(url as NSURL, nil),
+            let image = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+            else {
+                print("Couldn't load image \(profilePictureURL.path) from main bundle.")
+                return IndividualDetailViewModel.defaultImage
+        }
+        return image
     }
 }
+
+#if DEBUG
+struct IndividualDetailViewModel_Previews : PreviewProvider {
+    static var model = PreviewDatabase.individuals[0]
+
+    static var previews: some View {
+        VStack {
+            Image(decorative: model.image, scale: 10)
+            Text(model.fullName)
+        }
+            .previewLayout(.fixed(width: 200, height: 200))
+    }
+}
+#endif

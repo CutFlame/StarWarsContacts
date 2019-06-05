@@ -12,15 +12,9 @@ struct IndividualRow: View {
     var viewModel: IndividualDetailViewModel
     var body: some View {
         HStack() {
-//            Image(uiImage: #imageLiteral(resourceName: "user"))
-            viewModel.image
-                .shadow(radius: 10)
+            Image(decorative: viewModel.image, scale: 20)
                 .frame(width: 50, height: 50)
-                .imageScale(.small)
                 .clipped()
-                .foregroundColor(.gray)
-                .scaledToFit()
-                .fixedSize()
 
             Text(viewModel.fullName)
         }
