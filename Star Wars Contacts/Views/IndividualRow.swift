@@ -9,12 +9,16 @@
 import SwiftUI
 
 struct IndividualRow: View {
-    var viewModel: IndividualDetailViewModel
+    @EnvironmentObject var viewModel: IndividualDetailViewModel
     var body: some View {
         HStack() {
             Image(decorative: viewModel.image, scale: 20)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 50, height: 50)
-                .clipped()
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                .shadow(radius: 10)
 
             Text(viewModel.fullName)
         }
@@ -23,8 +27,11 @@ struct IndividualRow: View {
 
 #if DEBUG
 struct IndividualRow_Previews : PreviewProvider {
+    static var model = PreviewDatabase.individuals[0]
+    static var viewModel = IndividualDetailViewModel(model: model)
     static var previews: some View {
-        IndividualRow(viewModel: PreviewDatabase.individuals[0])
+        IndividualRow()
+            .environmentObject(viewModel)
             .previewLayout(.fixed(width: 300, height: 70))
     }
 }

@@ -34,8 +34,9 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
     }
 
     private func showListScreen() {
-        let viewModel = IndividualListViewModel(items: PreviewDatabase.individuals)
+        let viewModel = IndividualListViewModel()
+        viewModel.fetchItems()
 
-        window.rootViewController = UIHostingController(rootView: IndividualListView(viewModel: viewModel))
+        window.rootViewController = UIHostingController(rootView: IndividualListView().environmentObject(viewModel))
     }
 }

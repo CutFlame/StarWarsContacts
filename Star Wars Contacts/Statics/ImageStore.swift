@@ -9,23 +9,60 @@
 import CoreGraphics
 import SwiftUI
 
-final class ImageStore {
+class ImageStore {
+    private(set) var imageCache = [String:CGImage]()
+
+    func handleImageDataResult(_ key:String, _ result:Result<Data, Error>) {
+        switch result {
+        case .success(let data):
+            self.handleImageData(key, data)
+        case .failure(let error):
+            self.handleError(error)
+        }
+    }
+
+    func handleImageData(_ key:String, _ data:Data) {
+        if let image = convertToImage(data) {
+            self.imageCache[key] = image
+        } else {
+            handleError(POSIXError.init(.EFAULT))
+        }
+    }
+
+    func convertToImage(_ data:Data) -> CGImage? {
+        guard
+            let imageSource = CGImageSourceCreateWithData(data as CFData, nil),
+            let image = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+            else {
+                return nil
+        }
+        return image
+    }
+
+    func handleError(_ error:Error) {
+        print("ERROR: \(error)")
+    }
+
+}
+
+
+class OLDImageStore {
     fileprivate typealias _ImageDictionary = [String: [Int: CGImage]]
     fileprivate var images: _ImageDictionary = [:]
 
     fileprivate static var originalSize = 250
     fileprivate static var scale = 2
 
-    static var shared = ImageStore()
+    static var shared = OLDImageStore()
 
     func image(name: String, size: Int) -> Image {
         let index = _guaranteeInitialImage(name: name)
 
         let sizedImage = images.values[index][size]
-            ?? _sizeImage(images.values[index][ImageStore.originalSize]!, to: size * ImageStore.scale)
+            ?? _sizeImage(images.values[index][Self.originalSize]!, to: size * Self.scale)
         images.values[index][size] = sizedImage
 
-        return Image(sizedImage, scale: Length(ImageStore.scale), label: Text(verbatim: name))
+        return Image(sizedImage, scale: Length(Self.scale), label: Text(verbatim: name))
     }
 
     fileprivate func _guaranteeInitialImage(name: String) -> _ImageDictionary.Index {
@@ -39,7 +76,7 @@ final class ImageStore {
                 fatalError("Couldn't load image \(name) from main bundle.")
         }
 
-        images[name] = [ImageStore.originalSize: image]
+        images[name] = [Self.originalSize: image]
         return images.index(forKey: name)!
     }
 

@@ -10,12 +10,12 @@ import SwiftUI
 
 struct IndividualListView: View {
 
-    var viewModel: IndividualListViewModel
+    @EnvironmentObject var viewModel: IndividualListViewModel
     var body: some View {
         NavigationView {
             List(viewModel.items) { item in
                 NavigationButton(destination: IndividualDetailView(viewModel: item), isDetail: true) {
-                    IndividualRow(viewModel: item)
+                    IndividualRow().environmentObject(item)
                 }
             }
             .navigationBarTitle(Text("Individuals"))
@@ -26,8 +26,11 @@ struct IndividualListView: View {
 
 #if DEBUG
 struct IndividualListView_Previews : PreviewProvider {
+    static var models = PreviewDatabase.individuals.map(IndividualDetailViewModel.init)
+    static var viewModel = IndividualListViewModel(items: models)
     static var previews: some View {
-        IndividualListView(viewModel: IndividualListViewModel(items: PreviewDatabase.individuals))
+        IndividualListView()
+        .environmentObject(viewModel)
     }
 }
 #endif

@@ -7,46 +7,46 @@
 //
 
 import SwiftUI
+import Combine
 
-typealias IndividualDetailViewModel = IndividualModel
+//typealias IndividualDetailViewModel = IndividualModel
 
-extension IndividualDetailViewModel: Identifiable {
-    var fullName: String {
-        var names = [String]()
-        if !self.firstName.isEmpty {
-            names.append(firstName)
-        }
-        if !self.lastName.isEmpty {
-            names.append(lastName)
-        }
-        return names.joined(separator: " ")
-    }
-    
+class IndividualDetailViewModel: BindableObject, Identifiable {
+    let didChange = PassthroughSubject<IndividualDetailViewModel, Never>()
+
     static var defaultImage = UIImage(named: "user")!.cgImage!
 
+    let imageStore = Injector.imageStore
+    let directoryService = Injector.directoryService
+
+    private let model: IndividualModel
+    init(model:IndividualModel) {
+        self.model = model
+    }
+
+    var id: Int { model.id }
+    var birthdate: Date { model.birthdate }
+    var isForceSensitive: Bool { model.isForceSensitive }
+    var affiliation: AffiliationEnum { model.affiliation }
+    var fullName: String { model.fullName }
     var image: CGImage {
-        guard
-            let url = Bundle.main.url(forResource: profilePictureURL.path, withExtension: nil),
-            let imageSource = CGImageSourceCreateWithURL(url as NSURL, nil),
-            let image = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
-            else {
-                print("Couldn't load image \(profilePictureURL.path) from main bundle.")
-                return IndividualDetailViewModel.defaultImage
+        if let image = imageStore.imageCache[model.profilePictureURL.path] {
+            return image
         }
-        return image
+        fetchImage()
+        return IndividualDetailViewModel.defaultImage
     }
-}
 
-#if DEBUG
-struct IndividualDetailViewModel_Previews : PreviewProvider {
-    static var model = PreviewDatabase.individuals[0]
-
-    static var previews: some View {
-        VStack {
-            Image(decorative: model.image, scale: 10)
-            Text(model.fullName)
+    func fetchImage() {
+        let key = model.profilePictureURL.path
+        directoryService.fetchData(model.profilePictureURL) { [weak self] result in
+            self?.handleImageDataResult(key, result)
         }
-            .previewLayout(.fixed(width: 200, height: 200))
     }
+
+    func handleImageDataResult(_ key:String, _ result:Result<Data, Error>) {
+        self.imageStore.handleImageDataResult(key, result)
+        self.didChange.send(self)
+    }
+
 }
-#endif

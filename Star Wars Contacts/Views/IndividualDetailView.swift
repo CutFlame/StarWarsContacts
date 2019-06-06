@@ -38,7 +38,12 @@ struct IndividualDetailView: View {
 
     var body: some View {
         VStack {
-            Image(decorative: viewModel.image, scale: 3)
+            Image(decorative: viewModel.image, scale: 1)
+                .resizable()
+//                .aspectRatio(contentMode: ContentMode.fit)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 200, height: 200, alignment: .center)
+//            .clipped()
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 10)
@@ -55,16 +60,17 @@ struct IndividualDetailView: View {
 
             Spacer()
         }
-            .padding()
-
+        .padding()
     }
 
 }
 
 #if DEBUG
 struct IndividualDetailView_Previews : PreviewProvider {
+    static var model = PreviewDatabase.individuals[0]
+    static var viewModel = IndividualDetailViewModel(model: model)
     static var previews: some View {
-        return IndividualDetailView(viewModel: PreviewDatabase.individuals[0])
+        return IndividualDetailView(viewModel: viewModel)
     }
 }
 #endif

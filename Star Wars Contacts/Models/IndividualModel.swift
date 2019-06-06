@@ -30,6 +30,19 @@ struct IndividualModel: Codable {
     }
 }
 
+extension IndividualModel {
+    var fullName: String {
+        var names = [String]()
+        if !firstName.isEmpty {
+            names.append(firstName)
+        }
+        if !lastName.isEmpty {
+            names.append(lastName)
+        }
+        return names.joined(separator: " ")
+    }
+}
+
 //    func encode(to encoder: Encoder) throws {
 //        var container = encoder.container(keyedBy: CodingKeys.self)
 //        try container.encode(id, forKey: .id)

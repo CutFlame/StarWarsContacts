@@ -5,7 +5,7 @@
             "firstName":"Luke",
             "lastName":"Skywalker",
             "birthdate":"1963-05-05",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/07.png",
+            "profilePicture":"07",
             "forceSensitive":true,
             "affiliation":"JEDI"
         },
