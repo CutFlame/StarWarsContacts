@@ -21,12 +21,10 @@ protocol DirectoryServiceProtocol {
     func fetchData(_ url: URL, _ handler: @escaping DataResultHandler)
 }
 
-class DirectoryService {
-    private let sessionManager = Alamofire.Session()
-
+class DirectoryService: DirectoryServiceProtocol {
     func fetchDirectory(_ handler: @escaping DirectoryResultHandler) {
         let directoryURL = URL(string: "https://edge.ldscdn.org/mobile/interview/directory")!
-        sessionManager.request(directoryURL)
+        Session.default.request(directoryURL)
             .responseData { [weak self] response in
                 self?.handleDirectoryResponse(response, handler)
         }
@@ -48,7 +46,7 @@ class DirectoryService {
     }
 
     func fetchData(_ url: URL, _ handler: @escaping DataResultHandler) {
-        sessionManager.request(url)
+        Session.default.request(url)
             .responseData { response in
                 handler(response.result)
         }

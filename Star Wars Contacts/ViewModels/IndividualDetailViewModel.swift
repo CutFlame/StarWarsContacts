@@ -16,12 +16,20 @@ class IndividualDetailViewModel: BindableObject, Identifiable {
 
     static var defaultImage = UIImage(named: "user")!.cgImage!
 
-    let imageStore = Injector.imageStore
-    let directoryService = Injector.directoryService
+    let imageStore: ImageStoreProtocol
+    let directoryService: DirectoryServiceProtocol
 
     private let model: IndividualModel
     init(model:IndividualModel) {
         self.model = model
+        self.imageStore = Injector.imageStore
+        self.directoryService = Injector.directoryService
+    }
+
+    private(set) var error: Error? = nil {
+        didSet {
+            didChange.send(self)
+        }
     }
 
     var id: Int { model.id }
@@ -30,7 +38,7 @@ class IndividualDetailViewModel: BindableObject, Identifiable {
     var affiliation: AffiliationEnum { model.affiliation }
     var fullName: String { model.fullName }
     var image: CGImage {
-        if let image = imageStore.imageCache[model.profilePictureURL.path] {
+        if let image = imageStore.getImage(for: model.profilePictureURL.path) {
             return image
         }
         fetchImage()
@@ -45,8 +53,14 @@ class IndividualDetailViewModel: BindableObject, Identifiable {
     }
 
     func handleImageDataResult(_ key:String, _ result:Result<Data, Error>) {
-        self.imageStore.handleImageDataResult(key, result)
-        self.didChange.send(self)
+        switch result {
+        case .success(let data):
+            self.imageStore.addImage(for: key, data: data)
+            self.didChange.send(self)
+        case .failure(let error):
+            self.error = error
+        }
     }
+
 
 }

@@ -14,7 +14,7 @@ struct IndividualListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.items) { item in
-                NavigationButton(destination: IndividualDetailView(viewModel: item), isDetail: true) {
+                NavigationButton(destination: IndividualDetailView().environmentObject(item), isDetail: true) {
                     IndividualRow().environmentObject(item)
                 }
             }

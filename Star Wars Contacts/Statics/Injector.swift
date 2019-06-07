@@ -9,6 +9,6 @@
 import Foundation
 
 enum Injector {
-    static let imageStore = ImageStore()
-    static let directoryService = DirectoryService()
+    static let imageStore: ImageStoreProtocol = ImageStore()
+    static let directoryService: DirectoryServiceProtocol = DirectoryService()
 }

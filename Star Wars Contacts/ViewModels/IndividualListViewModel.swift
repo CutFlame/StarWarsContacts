@@ -12,7 +12,7 @@ import Combine
 class IndividualListViewModel: BindableObject {
     let didChange = PassthroughSubject<IndividualListViewModel, Never>()
 
-    let directoryService = Injector.directoryService
+    let directoryService: DirectoryServiceProtocol
 
     private(set) var items = [IndividualDetailViewModel]() {
         didSet {
@@ -28,6 +28,7 @@ class IndividualListViewModel: BindableObject {
 
     init(items: [IndividualDetailViewModel] = []) {
         self.items = items
+        self.directoryService = Injector.directoryService
     }
 
     func fetchItems() {

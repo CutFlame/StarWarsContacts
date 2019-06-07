@@ -77,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				273F1EE722A8876F00237A82 /* DirectoryService.swift */,
+				273F1EDE22A862E900237A82 /* ImageStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -101,9 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				27C3980422A7286700590E12 /* Info.plist */,
-				27C3980122A7286700590E12 /* LaunchScreen.storyboard */,
 				27C397F622A7286500590E12 /* AppDelegate.swift */,
 				27C397F822A7286500590E12 /* SceneDelegate.swift */,
+				27C3980122A7286700590E12 /* LaunchScreen.storyboard */,
 				27C397FC22A7286700590E12 /* Assets.xcassets */,
 				27C3981B22A83A4600590E12 /* Coordinators */,
 				27C3981A22A82DBC00590E12 /* Models */,
@@ -112,7 +113,6 @@
 				27C3982422A8469F00590E12 /* Statics */,
 				27C3981522A82D5F00590E12 /* ViewModels */,
 				27C3981022A820C700590E12 /* Views */,
-				275A571822A8C93300BEB608 /* Injector.swift */,
 			);
 			path = "Star Wars Contacts";
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 		27C397FE22A7286700590E12 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				27C397FF22A7286700590E12 /* Preview Assets.xcassets */,
 				27C3982922A8476500590E12 /* individuals.json */,
 				27C3982B22A8496B00590E12 /* PreviewDatabase.swift */,
+				27C397FF22A7286700590E12 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -149,9 +149,9 @@
 		27C3981A22A82DBC00590E12 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				27C3982022A83B4B00590E12 /* AffiliationEnum.swift */,
 				27C3980C22A72E5200590E12 /* IndividualModel.swift */,
 				27C3981E22A83B1800590E12 /* ResponseWrapper.swift */,
-				27C3982022A83B4B00590E12 /* AffiliationEnum.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 				27C3980E22A7400500590E12 /* Coders.swift */,
 				27C3982522A846D300590E12 /* DateFormatters.swift */,
 				27C3982722A846EC00590E12 /* FileManagerExtensions.swift */,
-				273F1EDE22A862E900237A82 /* ImageStore.swift */,
+				275A571822A8C93300BEB608 /* Injector.swift */,
 			);
 			path = Statics;
 			sourceTree = "<group>";
