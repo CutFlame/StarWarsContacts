@@ -14,7 +14,7 @@
             "firstName":"Leia",
             "lastName":"Organa",
             "birthdate":"1963-05-05",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/06.png",
+            "profilePicture":"06",
             "forceSensitive":true,
             "affiliation":"RESISTANCE"
         },
@@ -23,7 +23,7 @@
             "firstName":"Han",
             "lastName":"Solo",
             "birthdate":"1956-08-22",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/04.png",
+            "profilePicture":"04",
             "forceSensitive":false,
             "affiliation":"RESISTANCE"
         },
@@ -32,7 +32,7 @@
             "firstName":"Chewbacca",
             "lastName":"",
             "birthdate":"1782-11-15",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/01.png",
+            "profilePicture":"01",
             "forceSensitive":false,
             "affiliation":"RESISTANCE"
         },
@@ -41,7 +41,7 @@
             "firstName":"Kylo",
             "lastName":"Ren",
             "birthdate":"1987-10-31",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/05.jpg",
+            "profilePicture":"05",
             "forceSensitive":true,
             "affiliation":"FIRST_ORDER"
         },
@@ -50,7 +50,7 @@
             "firstName":"Supreme Leader",
             "lastName":"Snoke",
             "birthdate":"1947-01-01",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/08.jpg",
+            "profilePicture":"08",
             "forceSensitive":true,
             "affiliation":"FIRST_ORDER"
         },
@@ -59,7 +59,7 @@
             "firstName":"General",
             "lastName":"Hux",
             "birthdate":"1982-07-04",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/03.png",
+            "profilePicture":"03",
             "forceSensitive":false,
             "affiliation":"FIRST_ORDER"
         },
@@ -68,7 +68,7 @@
             "firstName":"Darth",
             "lastName":"Vader",
             "birthdate":"1947-07-13",
-            "profilePicture":"https://edge.ldscdn.org/mobile/interview/02.jpg",
+            "profilePicture":"02",
             "forceSensitive":true,
             "affiliation":"SITH"
         }
