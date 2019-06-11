@@ -9,19 +9,25 @@
 import Foundation
 
 enum Decoders {
-    static var json: JSONDecoder = newJSONDecoder()
+    static let json: JSONDecoder = newJSONDecoder()
 
-    static func newJSONDecoder() -> JSONDecoder {
+    private static func newJSONDecoder() -> JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = dateDecodingStrategy
         return decoder
     }
-    static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .custom(decodeDate)
+    static let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .custom(decodeDate)
 
     static func decodeDate(from decoder: Decoder) throws -> Date {
         let container = try decoder.singleValueContainer()
         let dateStr = try container.decode(String.self)
+        guard let date = decodeDate(from: dateStr) else {
+            throw DecodingError.typeMismatch(Date.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not decode date"))
+        }
+        return date
+    }
 
+    static func decodeDate(from dateStr:String) -> Date? {
         if let date = DateFormatters.simpleDate.date(from: dateStr) {
             return date
         }
@@ -31,16 +37,15 @@ enum Decoders {
         if let date = DateFormatters.timestampWithMiliseconds.date(from: dateStr) {
             return date
         }
-
-        throw DecodingError.typeMismatch(Date.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not decode date"))
+        return nil
     }
 
 }
 
 enum Encoders {
-    static var json: JSONEncoder = newJSONEncoder()
+    static let json: JSONEncoder = newJSONEncoder()
 
-    static func newJSONEncoder() -> JSONEncoder {
+    private static func newJSONEncoder() -> JSONEncoder {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .formatted(DateFormatters.simpleDate)
         return encoder

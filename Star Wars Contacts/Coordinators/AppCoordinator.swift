@@ -37,6 +37,8 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
         let viewModel = IndividualListViewModel()
         viewModel.fetchItems()
 
+        // Use a UIHostingController as window root view controller
+
         window.rootViewController = UIHostingController(rootView: IndividualListView().environmentObject(viewModel))
     }
 }
