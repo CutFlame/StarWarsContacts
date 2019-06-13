@@ -11,6 +11,7 @@ import Combine
 
 class IndividualListViewModel: BindableObject {
     let didChange = PassthroughSubject<IndividualListViewModel, Never>()
+    let didSelectedIndividual = PassthroughSubject<IndividualDetailViewModel, Never>()
 
     let directoryService: DirectoryServiceProtocol
 
@@ -33,6 +34,9 @@ class IndividualListViewModel: BindableObject {
 
     func fetchItems() {
         directoryService.fetchDirectory(handleDirectoryResult)
+    }
+    func selectItem(item: IndividualDetailViewModel) {
+        didSelectedIndividual.send(item)
     }
 
     func handleDirectoryResult(result: DirectoryResult) {

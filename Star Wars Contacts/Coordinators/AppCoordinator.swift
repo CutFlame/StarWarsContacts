@@ -8,12 +8,17 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 class AppCoordinator: Coordinator, CoordinatorProtocol {
     let window: UIWindow
     override init() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         super.init()
+    }
+
+    var navigationController: UINavigationController! {
+        window.rootViewController as? UINavigationController
     }
 
     func start() {
@@ -36,9 +41,25 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
     private func showListScreen() {
         let viewModel = IndividualListViewModel()
         viewModel.fetchItems()
+        _ = viewModel.didSelectedIndividual
+            .sink { (item) in
+            self.showDetailScreen(item)
+        }
 
         // Use a UIHostingController as window root view controller
+        let view = IndividualListView().environmentObject(viewModel)
+        let controller = UIHostingController(rootView: view)
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = true
+        window.rootViewController = nav
+    }
 
-        window.rootViewController = UIHostingController(rootView: IndividualListView().environmentObject(viewModel))
+    private func showDetailScreen(_ item:IndividualDetailViewModel) {
+        let view = IndividualDetailView().environmentObject(item)
+        let controller = UIHostingController(rootView: view)
+        _ = item.didNavigateBack.sink {
+            self.navigationController.popViewController(animated: true)
+        }
+        navigationController.pushViewController(controller, animated: true)
     }
 }

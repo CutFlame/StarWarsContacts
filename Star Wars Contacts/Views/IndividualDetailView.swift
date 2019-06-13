@@ -37,28 +37,32 @@ struct IndividualDetailView: View {
     }
 
     var body: some View {
-        VStack {
-            Image(decorative: viewModel.image, scale: 1)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 200, height: 200, alignment: .center)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 10)
+        NavigationView {
+            VStack {
+                Image(decorative: viewModel.image, scale: 1)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 200, height: 200, alignment: .center)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                    .shadow(radius: 10)
 
-            VStack(alignment: .leading) {
-                Text(viewModel.fullName)
-                    .font(.title)
-                    .padding(10)
+                VStack(alignment: .leading) {
+                    Text(viewModel.fullName)
+                        .font(.title)
+                        .padding(10)
 
-                LabelRow(title: "Birthdate", value: birthDate)
-                LabelRow(title: "Force Sensitive", value: isForceSensitive)
-                LabelRow(title: "Affiliation", value: affiliation)
+                    LabelRow(title: "Birthdate", value: birthDate)
+                    LabelRow(title: "Force Sensitive", value: isForceSensitive)
+                    LabelRow(title: "Affiliation", value: affiliation)
+                }
+                Spacer()
             }
-
-            Spacer()
+                .padding()
+                .navigationBarItems(leading: Button(action: viewModel.backAction) {
+                    Text("Back")
+                })
         }
-        .padding()
     }
 
 }
@@ -68,7 +72,8 @@ struct IndividualDetailView_Previews : PreviewProvider {
     static var model = PreviewDatabase.individuals[0]
     static var viewModel = IndividualDetailViewModel(model: model)
     static var previews: some View {
-        return IndividualDetailView().environmentObject(viewModel)
+        return IndividualDetailView()
+            .environmentObject(viewModel)
     }
 }
 #endif

@@ -9,10 +9,9 @@
 import SwiftUI
 import Combine
 
-//typealias IndividualDetailViewModel = IndividualModel
-
 class IndividualDetailViewModel: BindableObject, Identifiable {
     let didChange = PassthroughSubject<IndividualDetailViewModel, Never>()
+    let didNavigateBack = PassthroughSubject<Void, Never>()
 
     static var defaultImage = UIImage(named: "user")!.cgImage!
 
@@ -41,12 +40,16 @@ class IndividualDetailViewModel: BindableObject, Identifiable {
         if let image = imageStore.getImage(for: model.profilePictureURL.path) {
             return image
         }
-        fetchImage()
         return IndividualDetailViewModel.defaultImage
+    }
+
+    func backAction() {
+        didNavigateBack.send(())
     }
 
     func fetchImage() {
         let key = model.profilePictureURL.path
+        if imageStore.hasImage(for: key) { return }
         directoryService.fetchData(model.profilePictureURL) { [weak self] result in
             self?.handleImageDataResult(key, result)
         }
@@ -61,6 +64,4 @@ class IndividualDetailViewModel: BindableObject, Identifiable {
             self.error = error
         }
     }
-
-
 }

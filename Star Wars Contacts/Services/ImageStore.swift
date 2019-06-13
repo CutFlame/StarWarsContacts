@@ -13,6 +13,7 @@ protocol ImageStoreProtocol {
     func addImage(for key:String, data: Data)
     func addImage(for key:String, image: CGImage)
     func getImage(for key:String) -> CGImage?
+    func hasImage(for key:String) -> Bool
     func deleteImages()
 }
 
@@ -47,6 +48,10 @@ class ImageStore: ImageStoreProtocol {
 
     func getImage(for key: String) -> CGImage? {
         return imageCache[key]
+    }
+
+    func hasImage(for key: String) -> Bool {
+        return imageCache.keys.contains(key)
     }
 
     func handleError(_ error:Error) {
