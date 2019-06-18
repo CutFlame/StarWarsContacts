@@ -54,12 +54,13 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
         window.rootViewController = nav
     }
 
-    private func showDetailScreen(_ item:IndividualDetailViewModel) {
-        let view = IndividualDetailView().environmentObject(item)
-        let controller = UIHostingController(rootView: view)
-        _ = item.didNavigateBack.sink {
+    private func showDetailScreen(_ item:IndividualModel) {
+        let viewModel = IndividualDetailViewModel(model: item)
+        _ = viewModel.didNavigateBack.sink {
             self.navigationController.popViewController(animated: true)
         }
+        let view = IndividualDetailView().environmentObject(viewModel)
+        let controller = UIHostingController(rootView: view)
         navigationController.pushViewController(controller, animated: true)
     }
 }

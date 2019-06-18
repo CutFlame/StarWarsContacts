@@ -12,24 +12,40 @@ struct IndividualListView: View {
     @EnvironmentObject var viewModel: IndividualListViewModel
     var body: some View {
         NavigationView {
-            List(viewModel.items) { item in
+            List(viewModel.items.identified(by: \.id)) { item in
                 NavigationButton(destination: EmptyView(), onTrigger: {
                     self.viewModel.selectItem(item: item)
                     return false
                 }, label: {
-                    IndividualRow().environmentObject(item)
-                    }).onAppear(perform: {
-                        item.fetchImage()
+                    IndividualRow(image: self.getImage(for: item), name: item.fullName)
                     })
+                    .onAppear(perform: {
+                            self.viewModel.fetchImage(item: item)
+                        })
             }
             .navigationBarTitle(Text("Individuals"))
         }
+    }
+
+    func getImage(for item: IndividualModel) -> CGImage? {
+        nil
+        //viewModel.
+    }
+
+    func convertToImage(_ data:Data) -> CGImage? {
+        guard
+            let imageSource = CGImageSourceCreateWithData(data as CFData, nil),
+            let image = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+            else {
+                return nil
+        }
+        return image
     }
 }
 
 #if DEBUG
 struct IndividualListView_Previews : PreviewProvider {
-    static var models = PreviewDatabase.individuals.map(IndividualDetailViewModel.init)
+    static var models = PreviewDatabase.individuals
     static var viewModel = IndividualListViewModel(items: models)
     static var previews: some View {
         IndividualListView()

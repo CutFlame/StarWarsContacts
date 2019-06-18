@@ -22,9 +22,14 @@ protocol DirectoryServiceProtocol {
 }
 
 class DirectoryService: DirectoryServiceProtocol {
+    private let session: Session
+    init(resolver: DependencyResolver = Injector.shared) {
+        self.session = resolver.resolve()
+    }
+    
     func fetchDirectory(_ handler: @escaping DirectoryResultHandler) {
         let directoryURL = URL(string: "https://edge.ldscdn.org/mobile/interview/directory")!
-        Session.default.request(directoryURL)
+        session.request(directoryURL)
             .responseData { [weak self] response in
                 self?.handleDirectoryResponse(response, handler)
         }
@@ -46,7 +51,7 @@ class DirectoryService: DirectoryServiceProtocol {
     }
 
     func fetchData(_ url: URL, _ handler: @escaping DataResultHandler) {
-        Session.default.request(url)
+        session.request(url)
             .responseData { response in
                 handler(response.result)
         }

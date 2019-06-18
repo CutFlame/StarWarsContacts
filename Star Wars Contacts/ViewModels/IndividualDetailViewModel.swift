@@ -6,23 +6,22 @@
 //  Copyright © 2019 Michael Holt. All rights reserved.
 //
 
-import SwiftUI
+import protocol SwiftUI.BindableObject
+import Foundation
 import Combine
 
-class IndividualDetailViewModel: BindableObject, Identifiable {
+class IndividualDetailViewModel: BindableObject {
     let didChange = PassthroughSubject<IndividualDetailViewModel, Never>()
     let didNavigateBack = PassthroughSubject<Void, Never>()
-
-    static var defaultImage = UIImage(named: "user")!.cgImage!
 
     let imageStore: ImageStoreProtocol
     let directoryService: DirectoryServiceProtocol
 
     private let model: IndividualModel
-    init(model:IndividualModel) {
+    init(model:IndividualModel, injector: Injector = Injector.shared) {
         self.model = model
-        self.imageStore = Injector.imageStore
-        self.directoryService = Injector.directoryService
+        self.imageStore = injector.resolve()
+        self.directoryService = injector.resolve()
     }
 
     private(set) var error: Error? = nil {
@@ -36,12 +35,13 @@ class IndividualDetailViewModel: BindableObject, Identifiable {
     var isForceSensitive: Bool { model.isForceSensitive }
     var affiliation: AffiliationEnum { model.affiliation }
     var fullName: String { model.fullName }
-    var image: CGImage {
-        if let image = imageStore.getImage(for: model.profilePictureURL.path) {
-            return image
-        }
-        return IndividualDetailViewModel.defaultImage
-    }
+    var imageURLPath: String { model.profilePictureURL.path }
+//    var image: CGImage {
+//        if let image = imageStore.getImage(for: model.profilePictureURL.path) {
+//            return image
+//        }
+//        return IndividualDetailViewModel.defaultImage
+//    }
 
     func backAction() {
         didNavigateBack.send(())

@@ -8,21 +8,6 @@
 
 import SwiftUI
 
-struct LabelRow: View {
-    var title: String
-    var value: String
-
-    var body: some View {
-        HStack() {
-            Text(title)
-                .font(.subheadline)
-            Spacer()
-            Text(value)
-                .font(.subheadline)
-        }
-    }
-}
-
 struct IndividualDetailView: View {
     @EnvironmentObject var viewModel: IndividualDetailViewModel
 
@@ -36,10 +21,15 @@ struct IndividualDetailView: View {
         self.viewModel.affiliation.rawValue
     }
 
+    private func getImage(for name:String) -> CGImage {
+        let imageStore = Injector.resolve(ImageStoreProtocol.self)
+        return imageStore.getImage(for: name) ?? Theme.defaultImage
+    }
+
     var body: some View {
         NavigationView {
             VStack {
-                Image(decorative: viewModel.image, scale: 1)
+                Image(decorative: getImage(for: viewModel.imageURLPath), scale: 1)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 200, height: 200, alignment: .center)
@@ -52,9 +42,9 @@ struct IndividualDetailView: View {
                         .font(.title)
                         .padding(10)
 
-                    LabelRow(title: "Birthdate", value: birthDate)
-                    LabelRow(title: "Force Sensitive", value: isForceSensitive)
-                    LabelRow(title: "Affiliation", value: affiliation)
+                    LabelDetailRow(title: "Birthdate", value: birthDate)
+                    LabelDetailRow(title: "Force Sensitive", value: isForceSensitive)
+                    LabelDetailRow(title: "Affiliation", value: affiliation)
                 }
                 Spacer()
             }
