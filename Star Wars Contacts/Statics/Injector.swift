@@ -6,24 +6,25 @@
 //  Copyright © 2019 Michael Holt. All rights reserved.
 //
 
-import protocol Swinject.Resolver
-import class Swinject.Container
-import class Alamofire.Session
+import Foundation
+import Swinject
+import Alamofire
 
 typealias DependencyResolver = Swinject.Resolver
-typealias Injector = Container
+typealias DependencyContainer = Container
 
-extension Injector {
-    static let shared = Container() { container in
-        container.register(Session.self, factory: { r in Session.default })
+extension DependencyContainer {
+    static let resolver: DependencyResolver = Container() { container in
+        container.register(RequestInterceptor.self, factory: { r in NetworkLogger() })
+        container.register(Session.self, factory: { r in Session(configuration: URLSessionConfiguration.default, interceptor: r.resolve()) })
         container.register(ImageStoreProtocol.self, factory: { r in ImageStore() })
         container.register(DirectoryServiceProtocol.self, factory: { r in DirectoryService(resolver: r) })
     }
     static func resolve<T>() -> T {
-        return shared.resolve()
+        return resolver.resolve()
     }
     static func resolve<T>(_: T.Type) -> T {
-        return shared.resolve()
+        return resolver.resolve()
     }
 }
 

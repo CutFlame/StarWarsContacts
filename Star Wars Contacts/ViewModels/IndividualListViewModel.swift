@@ -29,10 +29,10 @@ class IndividualListViewModel: BindableObject {
         }
     }
 
-    init(items: [IndividualModel] = [], injector: Injector = Injector.shared) {
+    init(items: [IndividualModel] = [], resolver: DependencyResolver = DependencyContainer.resolver) {
         self.items = items
-        self.directoryService = injector.resolve()
-        self.imageStore = injector.resolve()
+        self.directoryService = resolver.resolve()
+        self.imageStore = resolver.resolve()
     }
 
     func fetchItems() {

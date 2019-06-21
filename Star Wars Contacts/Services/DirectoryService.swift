@@ -23,7 +23,7 @@ protocol DirectoryServiceProtocol {
 
 class DirectoryService: DirectoryServiceProtocol {
     private let session: Session
-    init(resolver: DependencyResolver = Injector.shared) {
+    init(resolver: DependencyResolver = DependencyContainer.resolver) {
         self.session = resolver.resolve()
     }
     

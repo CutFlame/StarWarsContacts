@@ -34,6 +34,7 @@
 		27F75A8B22B2F5E3007713E1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 27F75A8A22B2F5E3007713E1 /* Swinject */; };
 		27FE714922B9A11200D852AE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE714822B9A11200D852AE /* Theme.swift */; };
 		27FE714B22B9A3B400D852AE /* LabelDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE714A22B9A3B400D852AE /* LabelDetailRow.swift */; };
+		27FE714D22B9B42A00D852AE /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE714C22B9B42A00D852AE /* NetworkLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		27C3982B22A8496B00590E12 /* PreviewDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDatabase.swift; sourceTree = "<group>"; };
 		27FE714822B9A11200D852AE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		27FE714A22B9A3B400D852AE /* LabelDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDetailRow.swift; sourceTree = "<group>"; };
+		27FE714C22B9B42A00D852AE /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				27C3982722A846EC00590E12 /* FileManagerExtensions.swift */,
 				275A571822A8C93300BEB608 /* Injector.swift */,
 				27FE714822B9A11200D852AE /* Theme.swift */,
+				27FE714C22B9B42A00D852AE /* NetworkLogger.swift */,
 			);
 			path = Statics;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				27C3981722A82D7900590E12 /* IndividualDetailViewModel.swift in Sources */,
 				275A571922A8C93300BEB608 /* Injector.swift in Sources */,
 				27C3980F22A7400600590E12 /* Coders.swift in Sources */,
+				27FE714D22B9B42A00D852AE /* NetworkLogger.swift in Sources */,
 				27C3981222A820EB00590E12 /* IndividualDetailView.swift in Sources */,
 				27C3982C22A8496B00590E12 /* PreviewDatabase.swift in Sources */,
 				27C397F922A7286500590E12 /* SceneDelegate.swift in Sources */,

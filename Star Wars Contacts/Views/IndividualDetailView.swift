@@ -22,7 +22,7 @@ struct IndividualDetailView: View {
     }
 
     private func getImage(for name:String) -> CGImage {
-        let imageStore = Injector.resolve(ImageStoreProtocol.self)
+        let imageStore = DependencyContainer.resolve(ImageStoreProtocol.self)
         return imageStore.getImage(for: name) ?? Theme.defaultImage
     }
 

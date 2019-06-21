@@ -18,10 +18,10 @@ class IndividualDetailViewModel: BindableObject {
     let directoryService: DirectoryServiceProtocol
 
     private let model: IndividualModel
-    init(model:IndividualModel, injector: Injector = Injector.shared) {
+    init(model:IndividualModel, resolver: DependencyResolver = DependencyContainer.resolver) {
         self.model = model
-        self.imageStore = injector.resolve()
-        self.directoryService = injector.resolve()
+        self.imageStore = resolver.resolve()
+        self.directoryService = resolver.resolve()
     }
 
     private(set) var error: Error? = nil {
