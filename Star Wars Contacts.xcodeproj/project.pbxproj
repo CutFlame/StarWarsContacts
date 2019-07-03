@@ -34,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2727105F22CD319600A90426 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		273F1EDC22A84F5D00237A82 /* IndividualRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualRow.swift; sourceTree = "<group>"; };
 		273F1EDE22A862E900237A82 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		273F1EE722A8876F00237A82 /* DirectoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryService.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		27C397EA22A7286500590E12 = {
 			isa = PBXGroup;
 			children = (
+				2727105F22CD319600A90426 /* README.md */,
 				27C397F522A7286500590E12 /* Star Wars Contacts */,
 				27C397F422A7286500590E12 /* Products */,
 			);
