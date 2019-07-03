@@ -35,7 +35,7 @@ class IndividualDetailViewModel: BindableObject {
     var isForceSensitive: Bool { model.isForceSensitive }
     var affiliation: AffiliationEnum { model.affiliation }
     var fullName: String { model.fullName }
-    var imageURLPath: String { model.profilePictureURL.path }
+    var imageID: ImageID { model.profilePictureLookupKey }
 //    var image: CGImage {
 //        if let image = imageStore.getImage(for: model.profilePictureURL.path) {
 //            return image
@@ -48,7 +48,7 @@ class IndividualDetailViewModel: BindableObject {
     }
 
     func fetchImage() {
-        let key = model.profilePictureURL.path
+        let key = model.profilePictureLookupKey
         if imageStore.hasImage(for: key) { return }
         directoryService.fetchData(model.profilePictureURL) { [weak self] result in
             self?.handleImageDataResult(key, result)

@@ -42,14 +42,14 @@ class IndividualListViewModel: BindableObject {
         didSelectedIndividual.send(item)
     }
     func fetchImage(item: IndividualModel) {
-        let key = item.profilePictureURL.path
+        let key = item.profilePictureLookupKey
         if imageStore.hasImage(for: key) { return }
         directoryService.fetchData(item.profilePictureURL) { [weak self] result in
             self?.handleImageDataResult(key, result)
         }
     }
 
-    func handleImageDataResult(_ key:String, _ result:Result<Data, Error>) {
+    func handleImageDataResult(_ key:ImageID, _ result:Result<Data, Error>) {
         switch result {
         case .success(let data):
             self.imageStore.addImage(for: key, data: data)

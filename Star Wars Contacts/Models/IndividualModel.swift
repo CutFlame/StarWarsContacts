@@ -9,6 +9,7 @@
 import Foundation
 
 typealias ID = Int
+typealias ImageID = String
 
 struct IndividualModel: Codable {
     let id: ID
@@ -40,6 +41,9 @@ extension IndividualModel {
             names.append(lastName)
         }
         return names.joined(separator: " ")
+    }
+    var profilePictureLookupKey: ImageID {
+        return profilePictureURL.lastPathComponent
     }
 }
 

@@ -18,13 +18,84 @@ protocol ImageStoreProtocol {
 }
 
 class ImageStore: ImageStoreProtocol {
-    private var imageCache = [String:CGImage]()
+    private var imageCache = [ImageID:CGImage]()
+
+    init() {
+        loadCache()
+    }
+
+    private(set) var imageCacheDirectoryURL: URL = {
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        guard let cacheDirectory = paths.first else {
+            fatalError("Could not get cachesDirectory")
+        }
+        guard let cacheDirectoryURL = URL(string: "file://\(cacheDirectory)")?.appendingPathComponent("Images", isDirectory: true) else {
+            fatalError("Invalid URL")
+        }
+        try? FileManager.default.createDirectory(at: cacheDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+        return cacheDirectoryURL
+    }()
+
+    private var imageCacheContents: [String] {
+        let contents = (try? FileManager.default.contentsOfDirectory(atPath: imageCacheDirectoryURL.path)) ?? []
+        return contents
+    }
+
+    private func removeCache() {
+        for fileName in imageCacheContents {
+            let url = imageCacheDirectoryURL.appendingPathComponent(fileName)
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    private func loadCache() {
+        for fileName in imageCacheContents {
+            loadCacheImage(fileName: fileName)
+        }
+    }
+
+    private func loadCacheImage(fileName: String) {
+        let url = imageCacheDirectoryURL.appendingPathComponent(fileName)
+        loadCacheImage(url: url)
+    }
+
+    private func loadCacheImage(url: URL) {
+        let key = url.lastPathComponent
+        let data: Data
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            print(error)
+            return
+        }
+        guard let image = convertToImage(data) else { return }
+        imageCache[key] = image
+    }
+
+    private func saveCacheImage(key: ImageID, image: CGImage) {
+        let url = imageCacheDirectoryURL.appendingPathComponent(key)
+        saveCacheImage(url: url, image: image)
+    }
+    private func saveCacheImage(url: URL, image: CGImage) {
+        guard let data = convertToData(image) else { return }
+        do {
+            try data.write(to: url)
+        } catch {
+            print(error)
+        }
+    }
+
 
     func deleteImages() {
         imageCache.removeAll()
+        removeCache()
     }
 
-    func addImage(for key:String, data: Data) {
+    func addImage(for key:ImageID, data: Data) {
         if let image = convertToImage(data) {
             addImage(for: key, image: image)
         } else {
@@ -32,11 +103,12 @@ class ImageStore: ImageStoreProtocol {
         }
     }
 
-    func addImage(for key:String, image: CGImage) {
+    func addImage(for key:ImageID, image: CGImage) {
         self.imageCache[key] = image
+        saveCacheImage(key: key, image: image)
     }
 
-    func convertToImage(_ data:Data) -> CGImage? {
+    private func convertToImage(_ data:Data) -> CGImage? {
         guard
             let imageSource = CGImageSourceCreateWithData(data as CFData, nil),
             let image = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
@@ -46,11 +118,18 @@ class ImageStore: ImageStoreProtocol {
         return image
     }
 
-    func getImage(for key: String) -> CGImage? {
+    private func convertToData(_ image:CGImage) -> Data? {
+        guard let data = image.dataProvider?.data else {
+            return nil
+        }
+        return data as Data
+    }
+
+    func getImage(for key: ImageID) -> CGImage? {
         return imageCache[key]
     }
 
-    func hasImage(for key: String) -> Bool {
+    func hasImage(for key: ImageID) -> Bool {
         return imageCache.keys.contains(key)
     }
 

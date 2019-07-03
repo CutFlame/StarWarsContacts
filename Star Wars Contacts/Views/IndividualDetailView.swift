@@ -21,7 +21,7 @@ struct IndividualDetailView: View {
         self.viewModel.affiliation.rawValue
     }
 
-    private func getImage(for name:String) -> CGImage {
+    private func getImage(for name:ImageID) -> CGImage {
         let imageStore = DependencyContainer.resolve(ImageStoreProtocol.self)
         return imageStore.getImage(for: name) ?? Theme.defaultImage
     }
@@ -29,7 +29,7 @@ struct IndividualDetailView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image(decorative: getImage(for: viewModel.imageURLPath), scale: 1)
+                Image(decorative: getImage(for: viewModel.imageID), scale: 1)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 200, height: 200, alignment: .center)

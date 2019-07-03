@@ -42,8 +42,8 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
         let viewModel = IndividualListViewModel()
         viewModel.fetchItems()
         _ = viewModel.didSelectedIndividual
-            .sink { (item) in
-            self.showDetailScreen(item)
+            .sink { [weak self] (item) in
+            self?.showDetailScreen(item)
         }
 
         // Use a UIHostingController as window root view controller
