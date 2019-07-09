@@ -13,9 +13,8 @@ struct IndividualListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.items.identified(by: \.id)) { item in
-                NavigationButton(destination: EmptyView(), onTrigger: {
+                Button(action: {
                     self.viewModel.selectItem(item: item)
-                    return false
                 }, label: {
                     IndividualRow(image: self.getImage(for: item), name: item.fullName)
                     })

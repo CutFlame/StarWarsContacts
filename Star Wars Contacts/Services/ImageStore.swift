@@ -72,7 +72,10 @@ class ImageStore: ImageStoreProtocol {
             print(error)
             return
         }
-        guard let image = convertToImage(data) else { return }
+        guard let image = convertToImage(data) else {
+            print("ERROR: failed to convert data to image: \(url)")
+            return
+        }
         imageCache[key] = image
     }
 

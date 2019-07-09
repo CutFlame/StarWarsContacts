@@ -12,8 +12,8 @@ import Combine
 
 class AppCoordinator: Coordinator, CoordinatorProtocol {
     let window: UIWindow
-    override init() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+    init(window: UIWindow) {
+        self.window = window
         super.init()
     }
 

@@ -3,17 +3,15 @@
 ## Explain
 SwiftUI seems to lend itself well with the MVVM design pattern, but not necessarily to the MVVM-Coordinator pattern. I have spent some time and collaboration to figure out one way it can be done, altough it is somewhat hacky. This is my example project demonstrating the method I have come up with.
 
-It all comes down to how to transfer control from the NavigationButton to the Coordinator so that the Coordinator can be in charge of creating the next View and displaying it. Normally the NavigationButton requires the next View to be provided right there in the constructor and takes care of all this for you. The bad thing about this is that it couples that next View to the current View and now must follow no matter where the current View is used in the app. This breaks modularity and reusability of both the current View and the next View. So, to curcumvent the normal behavior of the NavigationButton I provide an `EmptyView()` and then use the `onTrigger` closure parameter to send a signal that the Coordinator can listen to. Then the coordinator creates and pushes the next View onto a traditional UINavigationController. I told you it was hacky.
+It all comes down to how to transfer control from the NavigationButton to the Coordinator so that the Coordinator can be in charge of creating the next View and displaying it. Normally the NavigationButton requires the next View to be provided right there in the constructor and takes care of all this for you. The bad thing about this is that it couples that next View to the current View and now must follow no matter where the current View is used in the app. This breaks modularity and reusability of both the current View and the next View. So, curcumventing the normal behavior of a NavigationButton (or NavigationLink) I use a `Button` instead and then use the `action` closure parameter to send a signal that the Coordinator can listen to. Then the coordinator creates and pushes the next View onto a traditional UINavigationController. I told you it was hacky.
 
 ## Show
 
 ### CurrentView
 ```
-NavigationButton(destination: EmptyView(), onTrigger: {
+Button(action: {
     // tell the viewModel to publish a signal
     self.viewModel.userSelectedNext()
-    // cancel the default push navigation behavior of the NavigationButton
-    return false
 }, label: { Text("Next") })
 ```
 
