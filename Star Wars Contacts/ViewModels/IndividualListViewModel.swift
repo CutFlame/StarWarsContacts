@@ -9,6 +9,7 @@
 import Foundation
 import protocol SwiftUI.BindableObject
 import Combine
+import CoreGraphics
 
 class IndividualListViewModel: BindableObject {
     let didChange = PassthroughSubject<Void, Never>()
@@ -41,12 +42,17 @@ class IndividualListViewModel: BindableObject {
     func selectItem(item: IndividualModel) {
         didSelectedIndividual.send(item)
     }
-    func fetchImage(item: IndividualModel) {
+    func fetchImageIfNeeded(item: IndividualModel) {
         let key = item.profilePictureLookupKey
         if imageStore.hasImage(for: key) { return }
         directoryService.fetchData(item.profilePictureURL) { [weak self] result in
             self?.handleImageDataResult(key, result)
         }
+    }
+
+    func getImage(for item: IndividualModel) -> CGImage {
+        let key = item.profilePictureLookupKey
+        return imageStore.getImage(for: key) ?? Theme.defaultImage
     }
 
     func handleImageDataResult(_ key:ImageID, _ result:Result<Data, Error>) {

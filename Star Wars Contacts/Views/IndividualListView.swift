@@ -16,30 +16,16 @@ struct IndividualListView: View {
                 Button(action: {
                     self.viewModel.selectItem(item: item)
                 }, label: {
-                    IndividualRow(image: self.getImage(for: item), name: item.fullName)
+                    IndividualRow(image: self.viewModel.getImage(for: item), name: item.fullName)
                     })
                     .onAppear(perform: {
-                            self.viewModel.fetchImage(item: item)
+                            self.viewModel.fetchImageIfNeeded(item: item)
                         })
             }
             .navigationBarTitle(Text("Individuals"))
         }
     }
 
-    func getImage(for item: IndividualModel) -> CGImage? {
-        nil
-        //viewModel.
-    }
-
-    func convertToImage(_ data:Data) -> CGImage? {
-        guard
-            let imageSource = CGImageSourceCreateWithData(data as CFData, nil),
-            let image = CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
-            else {
-                return nil
-        }
-        return image
-    }
 }
 
 #if DEBUG

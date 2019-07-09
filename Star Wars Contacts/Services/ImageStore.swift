@@ -8,6 +8,7 @@
 
 import CoreGraphics
 import SwiftUI
+import MobileCoreServices
 
 protocol ImageStoreProtocol {
     func addImage(for key:String, data: Data)
@@ -63,7 +64,13 @@ class ImageStore: ImageStoreProtocol {
         loadCacheImage(url: url)
     }
 
+    let validFileExtensions = ["png", "jpg", "gif"]
+
     private func loadCacheImage(url: URL) {
+        if !validFileExtensions.contains(url.pathExtension) {
+            //print("Not a valid file extension: '\(url.pathExtension)'")
+            return
+        }
         let key = url.lastPathComponent
         let data: Data
         do {
@@ -84,14 +91,15 @@ class ImageStore: ImageStoreProtocol {
         saveCacheImage(url: url, image: image)
     }
     private func saveCacheImage(url: URL, image: CGImage) {
-        guard let data = convertToData(image) else { return }
-        do {
-            try data.write(to: url)
-        } catch {
-            print(error)
-        }
+        writeCGImage(image, to: url)
     }
 
+    @discardableResult
+    func writeCGImage(_ image: CGImage, to destinationURL: URL) -> Bool {
+        guard let destination = CGImageDestinationCreateWithURL(destinationURL as CFURL, kUTTypePNG, 1, nil) else { return false }
+        CGImageDestinationAddImage(destination, image, nil)
+        return CGImageDestinationFinalize(destination)
+    }
 
     func deleteImages() {
         imageCache.removeAll()

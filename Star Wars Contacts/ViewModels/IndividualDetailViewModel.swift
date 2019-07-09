@@ -9,6 +9,7 @@
 import protocol SwiftUI.BindableObject
 import Foundation
 import Combine
+import CoreGraphics
 
 class IndividualDetailViewModel: BindableObject {
     let didChange = PassthroughSubject<IndividualDetailViewModel, Never>()
@@ -30,18 +31,12 @@ class IndividualDetailViewModel: BindableObject {
         }
     }
 
-    var id: Int { model.id }
+    var id: ID { model.id }
     var birthdate: Date { model.birthdate }
     var isForceSensitive: Bool { model.isForceSensitive }
     var affiliation: AffiliationEnum { model.affiliation }
     var fullName: String { model.fullName }
     var imageID: ImageID { model.profilePictureLookupKey }
-//    var image: CGImage {
-//        if let image = imageStore.getImage(for: model.profilePictureURL.path) {
-//            return image
-//        }
-//        return IndividualDetailViewModel.defaultImage
-//    }
 
     func backAction() {
         didNavigateBack.send(())
@@ -53,6 +48,10 @@ class IndividualDetailViewModel: BindableObject {
         directoryService.fetchData(model.profilePictureURL) { [weak self] result in
             self?.handleImageDataResult(key, result)
         }
+    }
+
+    func getImage() -> CGImage {
+        return imageStore.getImage(for: imageID) ?? Theme.defaultImage
     }
 
     func handleImageDataResult(_ key:String, _ result:Result<Data, Error>) {
