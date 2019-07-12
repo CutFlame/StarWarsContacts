@@ -31,6 +31,8 @@ class DirectoryService: DirectoryServiceProtocol {
         let directoryURL = URL(string: "https://edge.ldscdn.org/mobile/interview/directory")!
         session.request(directoryURL)
             .responseData { [weak self] response in
+                let urlRequest = response.request
+                print("Network Response: \(urlRequest?.httpMethod ?? "") \(urlRequest?.url?.absoluteString ?? "")")
                 self?.handleDirectoryResponse(response, handler)
         }
     }
@@ -53,6 +55,8 @@ class DirectoryService: DirectoryServiceProtocol {
     func fetchData(_ url: URL, _ handler: @escaping DataResultHandler) {
         session.request(url)
             .responseData { response in
+                let urlRequest = response.request
+                print("Network Response: \(urlRequest?.httpMethod ?? "") \(urlRequest?.url?.absoluteString ?? "")")
                 handler(response.result)
         }
     }

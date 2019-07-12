@@ -26,13 +26,11 @@ class ImageStore: ImageStoreProtocol {
     }
 
     private(set) var imageCacheDirectoryURL: URL = {
-        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        guard let cacheDirectory = paths.first else {
+        let urls = FileManager.default.urls(for: FileManager.SearchPathDirectory.cachesDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        guard let cacheDirectory = urls.first else {
             fatalError("Could not get cachesDirectory")
         }
-        guard let cacheDirectoryURL = URL(string: "file://\(cacheDirectory)")?.appendingPathComponent("Images", isDirectory: true) else {
-            fatalError("Invalid URL")
-        }
+        let cacheDirectoryURL = cacheDirectory.appendingPathComponent("Images", isDirectory: true)
         try? FileManager.default.createDirectory(at: cacheDirectoryURL, withIntermediateDirectories: true, attributes: nil)
         return cacheDirectoryURL
     }()
