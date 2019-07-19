@@ -12,7 +12,7 @@ import Combine
 import CoreGraphics
 
 class IndividualListViewModel: BindableObject {
-    let didChange = PassthroughSubject<Void, Never>()
+    let willChange = PassthroughSubject<IndividualListViewModel, Never>()
     let didSelectedIndividual = PassthroughSubject<IndividualModel, Never>()
 
     let directoryService: DirectoryServiceProtocol
@@ -20,13 +20,13 @@ class IndividualListViewModel: BindableObject {
 
     private(set) var items = [IndividualModel]() {
         didSet {
-            didChange.send(())
+            willChange.send(self)
         }
     }
 
     private(set) var error: Error? = nil {
         didSet {
-            didChange.send(())
+            willChange.send(self)
         }
     }
 
@@ -59,7 +59,7 @@ class IndividualListViewModel: BindableObject {
         switch result {
         case .success(let data):
             self.imageStore.addImage(for: key, data: data)
-            self.didChange.send(())
+            self.willChange.send(self)
         case .failure(let error):
             self.error = error
         }

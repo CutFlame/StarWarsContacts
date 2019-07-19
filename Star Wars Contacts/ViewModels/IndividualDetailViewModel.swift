@@ -12,7 +12,7 @@ import Combine
 import CoreGraphics
 
 class IndividualDetailViewModel: BindableObject {
-    let didChange = PassthroughSubject<IndividualDetailViewModel, Never>()
+    let willChange = PassthroughSubject<IndividualDetailViewModel, Never>()
     let didNavigateBack = PassthroughSubject<Void, Never>()
 
     let imageStore: ImageStoreProtocol
@@ -27,7 +27,7 @@ class IndividualDetailViewModel: BindableObject {
 
     private(set) var error: Error? = nil {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
         }
     }
 
@@ -58,7 +58,7 @@ class IndividualDetailViewModel: BindableObject {
         switch result {
         case .success(let data):
             self.imageStore.addImage(for: key, data: data)
-            self.didChange.send(self)
+            self.willChange.send(self)
         case .failure(let error):
             self.error = error
         }

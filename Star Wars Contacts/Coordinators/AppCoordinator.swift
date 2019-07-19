@@ -23,7 +23,6 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
 
     func start() {
         showLaunchScreen()
-        window.makeKeyAndVisible()
 
         DispatchQueue.main.async { [weak self] in
             self?.showListScreen()
@@ -56,8 +55,9 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
 
     private func showDetailScreen(_ item:IndividualModel) {
         let viewModel = IndividualDetailViewModel(model: item)
-        _ = viewModel.didNavigateBack.sink {
-            self.navigationController.popViewController(animated: true)
+        _ = viewModel.didNavigateBack
+            .sink { [weak self] in
+            self?.navigationController.popViewController(animated: true)
         }
         let view = IndividualDetailView().environmentObject(viewModel)
         let controller = UIHostingController(rootView: view)

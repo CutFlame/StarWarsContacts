@@ -8,7 +8,6 @@
 
 import Foundation
 
-// MARK: - Wrapper
 struct ResponseWrapper: Codable {
     let individuals: [IndividualModel]
 }
