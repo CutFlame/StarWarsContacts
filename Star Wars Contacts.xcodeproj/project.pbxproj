@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		273F1EDD22A84F5D00237A82 /* IndividualRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F1EDC22A84F5D00237A82 /* IndividualRow.swift */; };
 		273F1EDF22A862E900237A82 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F1EDE22A862E900237A82 /* ImageStore.swift */; };
-		273F1EE522A87B4700237A82 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 273F1EE422A87B4700237A82 /* Alamofire */; };
 		273F1EE822A8876F00237A82 /* DirectoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F1EE722A8876F00237A82 /* DirectoryService.swift */; };
 		275A571922A8C93300BEB608 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275A571822A8C93300BEB608 /* Injector.swift */; };
 		27C397F722A7286500590E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C397F622A7286500590E12 /* AppDelegate.swift */; };
@@ -31,10 +30,11 @@
 		27C3982822A846EC00590E12 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982722A846EC00590E12 /* FileManagerExtensions.swift */; };
 		27C3982A22A8476500590E12 /* individuals.json in Resources */ = {isa = PBXBuildFile; fileRef = 27C3982922A8476500590E12 /* individuals.json */; };
 		27C3982C22A8496B00590E12 /* PreviewDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3982B22A8496B00590E12 /* PreviewDatabase.swift */; };
-		27F75A8B22B2F5E3007713E1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 27F75A8A22B2F5E3007713E1 /* Swinject */; };
 		27FE714922B9A11200D852AE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE714822B9A11200D852AE /* Theme.swift */; };
 		27FE714B22B9A3B400D852AE /* LabelDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE714A22B9A3B400D852AE /* LabelDetailRow.swift */; };
 		27FE714D22B9B42A00D852AE /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE714C22B9B42A00D852AE /* NetworkLogger.swift */; };
+		FB7B2C352421770F003805B9 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FB7B2C342421770F003805B9 /* Swinject */; };
+		FB7B2C3824217827003805B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FB7B2C3724217827003805B9 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,8 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273F1EE522A87B4700237A82 /* Alamofire in Frameworks */,
-				27F75A8B22B2F5E3007713E1 /* Swinject in Frameworks */,
+				FB7B2C352421770F003805B9 /* Swinject in Frameworks */,
+				FB7B2C3824217827003805B9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +206,8 @@
 			);
 			name = "Star Wars Contacts";
 			packageProductDependencies = (
-				273F1EE422A87B4700237A82 /* Alamofire */,
-				27F75A8A22B2F5E3007713E1 /* Swinject */,
+				FB7B2C342421770F003805B9 /* Swinject */,
+				FB7B2C3724217827003805B9 /* Alamofire */,
 			);
 			productName = "Star Wars Contacts";
 			productReference = 27C397F322A7286500590E12 /* Star Wars Contacts.app */;
@@ -238,8 +238,8 @@
 			);
 			mainGroup = 27C397EA22A7286500590E12;
 			packageReferences = (
-				273F1EE322A87B4700237A82 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				27F75A8922B2F5E3007713E1 /* XCRemoteSwiftPackageReference "Swinject" */,
+				FB7B2C332421770F003805B9 /* XCRemoteSwiftPackageReference "Swinject" */,
+				FB7B2C3624217827003805B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 27C397F422A7286500590E12 /* Products */;
 			projectDirPath = "";
@@ -484,34 +484,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		273F1EE322A87B4700237A82 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		27F75A8922B2F5E3007713E1 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+		FB7B2C332421770F003805B9 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		FB7B2C3624217827003805B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		273F1EE422A87B4700237A82 /* Alamofire */ = {
+		FB7B2C342421770F003805B9 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 273F1EE322A87B4700237A82 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		27F75A8A22B2F5E3007713E1 /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 27F75A8922B2F5E3007713E1 /* XCRemoteSwiftPackageReference "Swinject" */;
+			package = FB7B2C332421770F003805B9 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		FB7B2C3724217827003805B9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB7B2C3624217827003805B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

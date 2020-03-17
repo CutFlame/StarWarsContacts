@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import enum Alamofire.AFError
 import class Alamofire.Session
 import struct Alamofire.DataResponse
 
@@ -33,11 +34,12 @@ class DirectoryService: DirectoryServiceProtocol {
             .responseData { [weak self] response in
                 let urlRequest = response.request
                 print("Network Response: \(urlRequest?.httpMethod ?? "") \(urlRequest?.url?.absoluteString ?? "")")
+                
                 self?.handleDirectoryResponse(response, handler)
         }
     }
 
-    func handleDirectoryResponse(_ response:DataResponse<Data>, _ handler: DirectoryResultHandler) {
+    func handleDirectoryResponse(_ response:DataResponse<Data, AFError>, _ handler: DirectoryResultHandler) {
         switch response.result {
         case .success(let data):
             do {
@@ -57,7 +59,16 @@ class DirectoryService: DirectoryServiceProtocol {
             .responseData { response in
                 let urlRequest = response.request
                 print("Network Response: \(urlRequest?.httpMethod ?? "") \(urlRequest?.url?.absoluteString ?? "")")
-                handler(response.result)
+                // why do I have to do this?  AFError is an error.  Weird...
+                let theResult: Result<Data, Error>
+                switch response.result {
+                case .failure(let err):
+                    theResult = .failure(err)
+                case .success(let data):
+                    theResult = .success(data)
+                }
+                
+                handler(theResult)
         }
     }
 }
