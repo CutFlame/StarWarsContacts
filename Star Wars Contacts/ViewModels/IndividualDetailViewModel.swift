@@ -6,13 +6,12 @@
 //  Copyright © 2019 Michael Holt. All rights reserved.
 //
 
-import protocol SwiftUI.BindableObject
+import protocol SwiftUI.ObservableObject
 import Foundation
 import Combine
 import CoreGraphics
 
-class IndividualDetailViewModel: BindableObject {
-    let willChange = PassthroughSubject<IndividualDetailViewModel, Never>()
+class IndividualDetailViewModel: ObservableObject {
     let didNavigateBack = PassthroughSubject<Void, Never>()
 
     let imageStore: ImageStoreProtocol
@@ -25,12 +24,7 @@ class IndividualDetailViewModel: BindableObject {
         self.directoryService = resolver.resolve()
     }
 
-    private(set) var error: Error? = nil {
-        didSet {
-            willChange.send(self)
-        }
-    }
-
+    @Published private(set) var error: Error? = nil
     var id: ID { model.id }
     var birthdate: Date { model.birthdate }
     var isForceSensitive: Bool { model.isForceSensitive }
@@ -57,8 +51,8 @@ class IndividualDetailViewModel: BindableObject {
     func handleImageDataResult(_ key:String, _ result:Result<Data, Error>) {
         switch result {
         case .success(let data):
+            self.objectWillChange.send()
             self.imageStore.addImage(for: key, data: data)
-            self.willChange.send(self)
         case .failure(let error):
             self.error = error
         }
