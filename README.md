@@ -8,7 +8,7 @@ It all comes down to how to transfer control from the NavigationButton to the Co
 ## Show
 
 ### CurrentView
-```
+```swift
 Button(action: {
     // tell the viewModel to publish a signal
     self.viewModel.userSelectedNext()
@@ -16,7 +16,7 @@ Button(action: {
 ```
 
 ### CurrentViewModel
-```
+```swift
 let didSelectNext = PassthroughSubject<Void, Never>()
 
 func userSelectedNext() {
@@ -25,7 +25,7 @@ func userSelectedNext() {
 ```
 
 ### Coordinator
-```
+```swift
 // subscribe/listen to the signal from the viewModel
 _ = viewModel.didSelectNext
     .sink { [weak self] in
