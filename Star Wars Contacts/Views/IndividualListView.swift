@@ -12,7 +12,7 @@ struct IndividualListView: View {
     @EnvironmentObject var viewModel: IndividualListViewModel
     var body: some View {
         NavigationView {
-            List(viewModel.items.identified(by: \.id)) { item in
+            List(viewModel.items, id: \.id) { item in
                 Button(action: {
                     self.viewModel.selectItem(item: item)
                 }, label: {
@@ -25,7 +25,6 @@ struct IndividualListView: View {
             .navigationBarTitle(Text("Individuals"))
         }
     }
-
 }
 
 #if DEBUG

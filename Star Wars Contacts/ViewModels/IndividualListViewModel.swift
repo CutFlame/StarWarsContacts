@@ -7,28 +7,18 @@
 //
 
 import Foundation
-import protocol SwiftUI.BindableObject
+import protocol SwiftUI.ObservableObject
 import Combine
 import CoreGraphics
 
-class IndividualListViewModel: BindableObject {
-    let willChange = PassthroughSubject<IndividualListViewModel, Never>()
+class IndividualListViewModel: ObservableObject {
     let didSelectedIndividual = PassthroughSubject<IndividualModel, Never>()
 
     let directoryService: DirectoryServiceProtocol
     let imageStore: ImageStoreProtocol
 
-    private(set) var items = [IndividualModel]() {
-        didSet {
-            willChange.send(self)
-        }
-    }
-
-    private(set) var error: Error? = nil {
-        didSet {
-            willChange.send(self)
-        }
-    }
+    @Published private(set) var items = [IndividualModel]()
+    @Published private(set) var error: Error? = nil
 
     init(items: [IndividualModel] = [], resolver: DependencyResolver = DependencyContainer.resolver) {
         self.items = items
@@ -58,8 +48,8 @@ class IndividualListViewModel: BindableObject {
     func handleImageDataResult(_ key:ImageID, _ result:Result<Data, Error>) {
         switch result {
         case .success(let data):
+            self.objectWillChange.send()
             self.imageStore.addImage(for: key, data: data)
-            self.willChange.send(self)
         case .failure(let error):
             self.error = error
         }

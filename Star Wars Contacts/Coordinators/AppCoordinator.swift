@@ -12,6 +12,9 @@ import Combine
 
 class AppCoordinator: Coordinator, CoordinatorProtocol {
     let window: UIWindow
+    
+    var cancellables = [String: AnyCancellable]()
+    
     init(window: UIWindow) {
         self.window = window
         super.init()
@@ -40,7 +43,7 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
     private func showListScreen() {
         let viewModel = IndividualListViewModel()
         viewModel.fetchItems()
-        _ = viewModel.didSelectedIndividual
+        cancellables["showList"] = viewModel.didSelectedIndividual
             .sink { [weak self] (item) in
             self?.showDetailScreen(item)
         }
@@ -55,7 +58,7 @@ class AppCoordinator: Coordinator, CoordinatorProtocol {
 
     private func showDetailScreen(_ item:IndividualModel) {
         let viewModel = IndividualDetailViewModel(model: item)
-        _ = viewModel.didNavigateBack
+        cancellables["detailBack"] = viewModel.didNavigateBack
             .sink { [weak self] in
             self?.navigationController.popViewController(animated: true)
         }
